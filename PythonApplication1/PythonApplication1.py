@@ -610,8 +610,8 @@ def main():
         label.place(x=700, y=250)
 
         
-        title_label = ctk.CTkLabel(root, text="Research Club",fg_color="#0f0f0f", font=("Algerian", 50, "bold", "underline"), justify="left", wraplength=380)
-        title_label.place(x=400, y=0)
+        title_label = ctk.CTkLabel(root, text="Research Club",fg_color="#0f0f0f", font=("Algerian", 50, "bold", "underline"), justify="left", wraplength=500)
+        title_label.place(x=350, y=0)
         
         desc_label = ctk.CTkLabel(root, text="ABOUT US:",fg_color="#0f0f0f", font=("Helvetica", 30, "bold", "underline"), justify="left", wraplength=380)
         desc_label.place(x=290, y=200)
@@ -681,7 +681,7 @@ def main():
 
         
         title_label = ctk.CTkLabel(root, text="Programming Club",fg_color="#0f0f0f", font=("Algerian", 50, "bold", "underline"), justify="left", wraplength=500)
-        title_label.place(x=400, y=0)
+        title_label.place(x=350, y=0)
         
         desc_label = ctk.CTkLabel(root, text="ABOUT US:",fg_color="#0f0f0f", font=("Helvetica", 30, "bold", "underline"), justify="left", wraplength=380)
         desc_label.place(x=290, y=200)
