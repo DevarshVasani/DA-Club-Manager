@@ -116,6 +116,56 @@ public:
         return;
     }
 
+    void acceptRequests(string name, string id, string club) {
+
+        ifstream requestFile("D://capstone//Requests.csv");
+        if (!requestFile.is_open()) {
+            cerr << "Failed to open Requests file." << endl;
+            return;
+        }
+
+        //getline(requestFile, name, ',');
+        //getline(requestFile, id, ',');
+        //getline(requestFile, club);
+
+        requestFile.close();
+        cout << "Showing the earliest sent request:" << endl;
+        cout << "Member Name: " << name << endl;
+        cout << "Member ID: " << id << endl;
+        cout << "Member Club: " << club << endl;
+        string ans;
+        cout << "Do you want to accept the request? ";
+        cin >> ans;
+
+        if (ans == "Yes" || ans == "yes") {
+
+            string password;
+            cout << "Enter password to accept the request: ";
+            cin >> password;
+            if (password != "123456") {
+                cout << "Incorrect password. Request not accepted." << endl;
+                return;
+            }
+
+            ofstream recordsFile("D://capstone//Records.csv", ios::app);
+            if (!recordsFile.is_open()) {
+                cerr << "Failed to open Records file." << endl;
+                return;
+            }
+
+            recordsFile << name << "," << id << "," << club << endl;
+
+            recordsFile.close();
+
+            //deleteMemberRequest(name);
+            cout << "Request accepted successfully." << endl;
+        }
+        else {
+            cout << "Sorry your request has been rejected :(" << endl;
+            //deleteMemberRequest(name);
+        }
+    }
+
     // Insert member function
     void insert() {
 
@@ -150,6 +200,32 @@ public:
         file.close();
 
         cout << "Member added successfully." << endl;
+    }
+
+    string sendRequests(string name, string id, string club) {
+
+        //cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        //cout << "Enter name of the member: ";
+        //getline(cin, name);
+
+        //cout << "Enter ID of the member: ";
+        //getline(cin, id);
+        //cout << "Enter club of the member: ";
+        //getline(cin, club);
+
+
+        ofstream file("D://capstone//Requests.csv", ios::app);
+        if (!file.is_open()) {
+            cerr << "Failed to open CSV file." << endl;
+            return "Failed to open CSV file.";
+        }
+
+
+        file << name << "," << id << "," << club << endl;
+        file.close();
+
+        cout << "Request sent successfully." << endl;
+        return "Request sent successfully.";
     }
 };
 
@@ -206,6 +282,7 @@ PYBIND11_MODULE(superfastcode2, m) {
     py::class_<Member>(m, "Member")
         .def(py::init<>())
         .def("search_by_id", &Member::searchbyID)
+        .def("member_request", &Member::sendRequests)
 
         .def("search_by_name", &Member::searchbyName);
 
