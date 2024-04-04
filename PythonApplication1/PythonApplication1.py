@@ -1,11 +1,12 @@
 from cProfile import label
 from re import I
 from urllib import request
+import pyglet
 import customtkinter as ctk
 from CTkListbox import *
 import tkinter
 import os
-
+from PIL import Image
 import superfastcode2
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -18,6 +19,7 @@ root.geometry("1020x700")
 
 def main():
     
+    validation = False
     
 
     def member_request():
@@ -81,6 +83,15 @@ def main():
             widget.destroy()
     except:
         pass
+    
+    def fillout(e):
+        global listbox
+        try:
+            name = listbox.get(listbox.curselection())
+            search_bar.delete(0, tkinter.END)
+            search_bar.insert(0, name)
+        except:
+            pass
     def check(e):
         global listbox
         try:
@@ -92,6 +103,8 @@ def main():
         listbox = CTkListbox(root, width = 700)
         listbox.place(x=100, y = 175)
         
+        listbox.bind("<<ListboxSelect>>", fillout)
+
         type = search_bar.get()
         
         data =[]
@@ -115,7 +128,7 @@ def main():
         
         
     def search():
-        
+
 
         name_search = search_bar.get()
         
@@ -165,6 +178,8 @@ def main():
     search_bar.place(relx = 0.45, rely = 0.25, anchor = "n")
     
     search_bar.bind("<KeyRelease>", check)
+
+    
     
     autofill = superfastcode2.autokeys()
     
@@ -179,7 +194,7 @@ def main():
     
     club_button = ctk.CTkButton(access_frame, text="View Club", fg_color="#242424",cursor="hand2", width=250,height = 50)
     club_button.place(relx = 0.05, rely = 0.3)
-
+    
     sendrequest_button = ctk.CTkButton(access_frame, text="Request to join club",fg_color="#242424",cursor="hand2", width=250,height = 50, command=member_request)
     sendrequest_button.place(relx = 0.05, rely = 0.45)
     
@@ -246,7 +261,7 @@ def main():
         
         
         
-
+        
     
 
     

@@ -34,7 +34,7 @@ public:
         : name(name), id(id), club(club) {}
 
     vector<string> searchbyName(string& key) {
-        vector<string>identity(3);  
+        vector<string>identity(3);
 
         unordered_map<string, Member> hashtable = buildHashTable("D://capstone//Records.csv", "name");
         auto it = hashtable.find(key);
