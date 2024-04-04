@@ -124,7 +124,7 @@ def main():
         desc_label = ctk.CTkLabel(root, text="ABOUT US:",fg_color="#0f0f0f", font=("Helvetica", 30, "bold", "underline"), justify="left", wraplength=380)
         desc_label.place(x=290, y=200)
 
-        info_text = """-> Community of people who are actively learning about AI and implementing related things….
+        info_text = """-> Community of people who are actively learning about AI and implementing related things�.
         
 -> We provide them proper guidance about tactics and other aspects of the game 
 
@@ -197,7 +197,7 @@ def main():
         
 -> AI club is a community where students interested in artificial intelligence come together to learn, collaborate on projects and attend workshops. 
 
--> It also allows students engage with industry experts to explore and advance their skills in AI.
+-> It also allows students engage with industry experts to explore and advance their�skills�in�AI.
 
 """
 
@@ -342,7 +342,7 @@ def main():
 
 -> We encourage them to develop their skills and provide them platform by conducting various tournaments and making them participate in inter college tournaments.
 
--> We don’t only have performers, but also wonderful script writers, directors, composers, etc., but first, we are a group of crazy and dedicated learners.
+-> We don�t only have performers, but also wonderful script writers, directors, composers, etc., but first, we are a group of crazy and dedicated learners.
 """
 
         
@@ -549,7 +549,7 @@ def main():
 
         info_text = """-> PMMC or Photography and moviemaking club as the name suggest we are the photographer and video makers.
         
--> We, as the members of the club, seek to display our love of photography through capturing our college’s events and festivals.
+-> We, as the members of the club, seek to display our love of photography through capturing our college�s events and festivals.
 
 -> To encourage people we organize Photo and Design Exhibitions, Photography walks, sessions on photography and film making, also tries to provide hands on sessions.
 
