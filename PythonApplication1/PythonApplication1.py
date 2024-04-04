@@ -35,7 +35,7 @@ def main():
             pass
         
 
-        image_path = r"C:\Users\DELL\Desktop\chess.jpeg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\Chess Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -86,7 +86,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
         
     def ai():
@@ -104,7 +104,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\AI Club.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\AI Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -155,7 +155,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
         
     def bussiness():
@@ -173,7 +173,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\Business Club.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\Business Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -224,7 +224,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0) 
    
     def dadc():
@@ -242,7 +242,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\DADC.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\DADC.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -297,7 +297,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)    
 
 
@@ -316,7 +316,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\DTG Club.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\DTG Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -352,7 +352,7 @@ def main():
         
         conv_info = """Convenor:
         
-        Nishith Parekh
+        Devarsh Vasani
         Number : 9904549647
         """
         depconv_info = """Deputy Convenor:
@@ -369,9 +369,46 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
+        back_button.place(relx = 0, rely = 0) 
+        
+    def help_please():
+        
+        try:
+            for widgets in access_frame.winfo_children():
+                widgets.destroy()
+            for widgets1 in title_frame.winfo_children():
+                widgets1.destroy()
+            for widgets3 in request_frame.winfo_children():
+                widgets3.destroy()
+            for widgets4 in search_frame.winfo_children():
+                widgets4.destroy()
+        except:
+            pass
+        
+        image_path = os.path.dirname(__file__) + "\icons\cry.jpg"  # Change this to your image path
+        image = Image.open(image_path)
+        # Resize the image to your desired dimensions
+        image = image.resize((700, 700), Image.Resampling.LANCZOS)
+
+        # Create the PhotoImage object from the resized image
+        photo = ImageTk.PhotoImage(image)
+
+        # Display the image using a custom Label widget from customtkinter
+        label = ctk.CTkLabel(root, image=photo)
+        label.image = photo  # Keep a reference to the image object
+        label.place(x=220, y=70)
+
+        
+        title_label = ctk.CTkLabel(root, text="HELP US PLEASE!!",fg_color="#0f0f0f", font=("Algerian", 50, "bold", "underline"), justify="left", wraplength = 500)
+        title_label.place(x=300, y=0)
+        
         back_button = ctk.CTkButton(root, text = "back", command = main)
         back_button.place(relx = 0, rely = 0) 
         
+
+        
+
 
     def khelaiya():
         
@@ -388,7 +425,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\khelaiya.png"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\khelaiya.png"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -424,7 +461,7 @@ def main():
         conv_info = """Convenor:
         
         
-        Vidhi Ahir
+        Meet Gandhi
         Number : 6354028428
         """
         depconv_info = """Deputy Convenor:
@@ -440,7 +477,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
         
     def press():
@@ -493,7 +530,7 @@ def main():
         
         conv_info = """Convenor:
         
-        Malav Rohit
+        Dharmya Agja
         Number : 9906194310
         """
         depconv_info = """Deputy Convenor:
@@ -509,7 +546,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
         
     def pmmc():
@@ -527,7 +564,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\pmmc.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\pmmc.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -578,7 +615,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
         
     def research():
@@ -596,7 +633,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\Research Club.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\Research Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -647,9 +684,14 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
+      
         
+    def back_again():
+    
+         back_to_pavillion()
+         view_club()
 
     def prog():
         
@@ -666,7 +708,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\Programming Club.jpg"  # Change this to your image path
+        image_path = os.path.dirname(__file__) + "\icons\Programming Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -721,7 +763,7 @@ def main():
         depconv_label.place(x=15, y=325)
 
         # Run the mainloop for the chess window
-        back_button = ctk.CTkButton(root, text = "back", command = main)
+        back_button = ctk.CTkButton(root, text = "back", command = back_again)
         back_button.place(relx = 0, rely = 0)
         
     def view_club():
@@ -927,46 +969,44 @@ def main():
     global list_club, list_id, list_name
     member = superfastcode2.Member()
     
-    title_frame = ctk.CTkFrame(root, width = 1020, height = 150, fg_color="#0f0f0f")
-    title_frame.place(relx = 0.5, rely = 0, anchor = "n")
+    def back_to_pavillion():
+        global title_frame,search_bar,search_frame,search_button,autofill,club_button,help_button,request_frame,access_frame
+        title_frame = ctk.CTkFrame(root, width = 1020, height = 150, fg_color="#0f0f0f")
+        title_frame.place(relx = 0.5, rely = 0, anchor = "n")
 
-    title_label = ctk.CTkLabel(title_frame, text="DAIICT Club Manager", font=("Arial Black", 40))
-    title_label.place(relx = 0.5, rely = 0.25, anchor = "n")
+        title_label = ctk.CTkLabel(title_frame, text="DAIICT Club Manager", font=("Arial Black", 40))
+        title_label.place(relx = 0.5, rely = 0.25, anchor = "n")
     
 
-    search_frame = ctk.CTkFrame(root, width=1020, height=71,fg_color= "#0f0f0f", border_width=0, corner_radius=0)
+        search_frame = ctk.CTkFrame(root, width=1020, height=71,fg_color= "#0f0f0f", border_width=0, corner_radius=0)
 
-    search_frame.place(relx = 0.5, rely = 0.17, anchor = "n")
+        search_frame.place(relx = 0.5, rely = 0.17, anchor = "n")
     
-    search_bar = ctk.CTkEntry(search_frame, width=700,corner_radius=50, placeholder_text="Search...", border_width=2, font=('Helvetica', 16))
-    search_bar.place(relx = 0.45, rely = 0.25, anchor = "n")
+        search_bar = ctk.CTkEntry(search_frame, width=700,corner_radius=50, placeholder_text="Search...", border_width=2, font=('Helvetica', 16))
+        search_bar.place(relx = 0.45, rely = 0.25, anchor = "n")
     
-    search_bar.bind("<KeyRelease>", check)
-
-    
-    
-    autofill = superfastcode2.autokeys()
-    
-    search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,command=search, width=70, text_color="black")
-    search_button.place(relx = 0.83, rely = 0.25, anchor = "n")
-
-    access_frame = ctk.CTkFrame(root, width=280, height=500, border_width=0, fg_color="#0f0f0f",corner_radius=0)
-    access_frame.place(relx = 0.00, rely = 0.27, anchor = "nw")
-    
-    club_button = ctk.CTkButton(access_frame, text="Club", fg_color="#242424",cursor="hand2" ,width=250,height = 50, font=('Helvetica', 16), command=view_club)
-    club_button.place(relx = 0.05, rely = 0.3)
+        search_bar.bind("<KeyRelease>", check)
 
     
-    add_club = ctk.CTkButton(access_frame, text="Add Club", fg_color="#242424",cursor="hand2", width=250,height = 50)
-    add_club.place(relx = 0.05, rely = 0.45)
     
-    help_button = ctk.CTkButton(access_frame, text="Help",fg_color="#242424",cursor="hand2", width=250,height = 50)
-    help_button.place(relx = 0.05, rely = 0.6)
+        autofill = superfastcode2.autokeys()
     
-    request_frame = ctk.CTkScrollableFrame(root,fg_color="#0f0f0f", width=721, height=500, border_width=0,corner_radius=0)
-    request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
+        search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,command=search, width=70, text_color="black")
+        search_button.place(relx = 0.83, rely = 0.25, anchor = "n")
+
+        access_frame = ctk.CTkFrame(root, width=280, height=500, border_width=0, fg_color="#0f0f0f",corner_radius=0)
+        access_frame.place(relx = 0.00, rely = 0.27, anchor = "nw")
     
+        club_button = ctk.CTkButton(access_frame, text="Club", fg_color="#242424",cursor="hand2" ,width=250,height = 50, font=('Helvetica', 16), command=view_club)
+        club_button.place(relx = 0.05, rely = 0.3)
     
+        help_button = ctk.CTkButton(access_frame, text="Help",fg_color="#242424",cursor="hand2", width=250,height = 50,command = help_please)
+        help_button.place(relx = 0.05, rely = 0.6)
+    
+        request_frame = ctk.CTkScrollableFrame(root,fg_color="#0f0f0f", width=721, height=500, border_width=0,corner_radius=0)
+        request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
+    
+    back_to_pavillion()
     
     list_name = ["Meet", "dharmya", "Kalp", "Devarsh"]
     list_id = ["201801001", "201801002", "201801003", "201801004"]
