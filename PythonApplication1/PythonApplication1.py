@@ -1,20 +1,20 @@
 ﻿from cProfile import label
 from re import I
+from tkinter.ttk import Progressbar
 from turtle import update
+from sqlite3 import ProgrammingError
+from tkinter.font import BOLD
 from urllib import request
-import pyglet
-from tktimepicker import AnalogPicker, AnalogThemes,constants
-from tkcalendar import Calendar
 import customtkinter as ctk
 from CTkListbox import *
 import tkinter
 import os
-import time
+from tkcalendar import Calendar
+from tktimepicker import AnalogPicker, AnalogThemes, constants
+
+from PIL import Image, ImageTk
 from CTkTable import *
-
-from PIL import Image
 import superfastcode2
-
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
 
@@ -25,6 +25,11 @@ root.geometry("1020x700")
 
 
 def main():
+    def back_again():
+    
+         back_to_pavillion()
+         view_club()
+    
     def chess():
         
         try:
@@ -571,9 +576,7 @@ def main():
         depconv_info = """Deputy Convenor:
         
         Prayag Dave
-        Number : 9865157558
-        """
-    
+        Number : 9865157558"""
         conve_label = ctk.CTkLabel(root, text=conv_info,fg_color="#0f0f0f", font=("Helvetica", 20), justify="left", wraplength=320)
         conve_label.place(x=15, y=200)
         
@@ -632,7 +635,7 @@ def main():
         desc_label = ctk.CTkLabel(root, text=info_text,fg_color="#0f0f0f", font=("Helvetica", 20), justify="left", wraplength=380)
         desc_label.place(x=290, y=200)
         
-        conv_info = """Convenor:
+        conv_info = """ Convenor:
         
         Jui Telavane
         Number : 9909079531
@@ -772,6 +775,8 @@ def main():
    
     
 
+
+
     def member_request():
         
         root1 = ctk.CTk()
@@ -830,11 +835,6 @@ def main():
         root1.mainloop()
 
         
-    try:
-        for widget in root.winfo_children():
-            widget.destroy()
-    except:
-        pass
     
     def fillout(e):
         global listbox
@@ -845,6 +845,7 @@ def main():
             listbox.destroy()
         except:
             pass
+    
     def check(e):
         global listbox
         try:
@@ -856,8 +857,13 @@ def main():
         listbox = CTkListbox(root, width = 700)
         listbox.place(x=100, y = 175)
         
-        listbox.bind("<<ListboxSelect>>", fillout)
 
+        
+        listbox.bind("<<ListboxSelect>>", fillout)
+        
+
+        
+        
         type = search_bar.get()
         
         data =[]
@@ -910,8 +916,7 @@ def main():
             found_label.pack(padx= 15, pady = 51)
         
             name_label = ctk.CTkLabel(request_frame, text=f"Name : {list[0]}", font=("Times New Roman", 20))
-            name_label.pack(padx= (15, 5), pady = 15)
-        
+            name_label.pack(padx= 5, pady = 15)
             id_label = ctk.CTkLabel(request_frame, text=f"ID : {list[1]}", font=("Times New Roman", 20))
             id_label.pack(padx= 5, pady = 15)
         
@@ -985,6 +990,11 @@ def main():
 
 
     
+    
+    
+
+    
+    
     def update_request():
         
         try:
@@ -999,17 +1009,18 @@ def main():
             text_club = list_club[i]
             
             def adding():
+                global list_name, list_club, list_id    
                 print(password.get())
-                outrequest = member.member_accept(os.path.dirname(__file__) + "\Records.csv",os.path.dirname(__file__) + "\Requests.csv",os.path.dirname(__file__) + "\temp.csv",name_hashtable,text_name, text_id, text_club, password.get())
+                outrequest = member.member_accept(os.path.dirname(__file__) + "\Records.csv",os.path.dirname(__file__) + "\Requests.csv",os.path.dirname(__file__) + "\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
                 print(outrequest)
-                update_request()
-                root2.destroy()
-                try:
-                    status.destroy()
-                except:
-                    pass
-                status = ctk.CTkLabel(root, text=f"Request of {text_name} Accepted", text_color = "#7ed07e", fg_color = "#0f0f0f", font=("Times New Roman", 14),height = 20, width = 1020)
-                status.place(x = 0, y = 165)
+                if outrequest == "Request accepted successfully.":
+                    list_name = member.readName(os.path.dirname(__file__) + "\Requests.csv")
+                    list_id = member.readId(os.path.dirname(__file__) + "\Requests.csv")
+                    list_club = member.readClub(os.path.dirname(__file__) + "\Requests.csv")    
+                    
+                    update_request()
+                    root2.destroy()
+                
                 
                     
 
@@ -1032,17 +1043,16 @@ def main():
                 
                 
                 def reject():
-                    if passwordreject.get() == list_club[i] + "123":
-                        outrequest = member.delete_request(text_name)
+                    list_club[i].strip()
+                    print(list_club[i] + "123")
+                    passwordreject.get()
+                    if (passwordreject.get() == list_club[i] + "123") or (" " +passwordreject.get() == list_club[i] + "123"):
+                        tempfilepath = os.path.dirname(__file__) + "\ctemp.csv"
+                        outrequest = member.delete_request(os.path.dirname(__file__) + "\Requests.csv",tempfilepath,text_name)
                         print(outrequest)
                         update_request()
                         
-                        try:
-                            status.destroy()
-                        except:
-                            pass
-                        status = ctk.CTkLabel(root, text=f"Request of {text_name} Rejected", text_color = "white", fg_color = "#f74b4b", font=("Times New Roman", 13),height = 20, width = 1020)
-                        status.place(x = 0, y = 165)
+                        
                         
                         root3.destroy()
                     
@@ -1189,20 +1199,16 @@ def main():
         global name_hashtable, id_hashtable, member, event, validation, list_clubsrequest
         
         
+        Title_label = ctk.CTkLabel(root, text="DA-IICT Club Manager", font=("Arial", 50, "bold"))
+        Title_label.place(relx = 0.5, rely = 0.4, anchor = "n")
         
-        Label = ctk.CTkLabel(root, text="DA-IICT Club Manager", font=("Arial Black", 60))
-        Label.place(relx = 0.5, rely = 0.4, anchor = "n")
-        
-        progressbar = ctk.CTkProgressBar(root, width=1020, height = 8,orientation="horizontal",mode="indeterminate", determinate_speed=3,indeterminate_speed=1, fg_color="#0f0f0f", bg_color="#0f0f0f", corner_radius=0)
-        progressbar.place(relx = 0.5, rely = 0.9, anchor = "n")
-        
-        label = ctk.CTkLabel(root, text="Building Hash Table...")
-        label.place(relx = 0.5, rely = 0.85, anchor = "n")
-        progressbar.start()
-        print("Building Hash Table")
-        
-        
-        
+
+        Progressbar = ctk.CTkProgressBar(root, width=1020, height=9, fg_color="#0f0f0f", bg_color="#0f0f0f", border_width=0, corner_radius=0, mode="indeterminate", indeterminate_speed=1,orientation="horizontal")
+        Progressbar.place(relx = 0.5, rely = 0.9, anchor = "n")
+
+    
+
+        Progressbar.start()
         
         name_hashtable = superfastcode2.buildHashTable(os.path.dirname(__file__) + "\Records.csv", "name")
         id_hashtable = superfastcode2.buildHashTable(os.path.dirname(__file__) + "\Records.csv", "id")
@@ -1226,14 +1232,22 @@ def main():
         
     main_screen()
 
+    
+    
+    
+
+
+    
+    
+    
+
 
     
 
+    
     
 main()
 
 root.resizable(False, False)
-
-
 
 root.mainloop()

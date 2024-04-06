@@ -318,10 +318,12 @@ public:
         return;
     }
 
-    void replaceMember(char* path_records, char* folderpath,const string& memberName, const string& newID, const string& newClub) {
+    void replaceMember(char* path_records, string folderpath,const string& memberName, const string& newID, const string& newClub) {
         ifstream inFile(path_records);
         ofstream tempFile(folderpath);
 
+
+        char* temp_array  = &folderpath[0];
         if (inFile.is_open() && tempFile.is_open()) {
             string line;
             while (getline(inFile, line)) {
@@ -342,7 +344,7 @@ public:
             tempFile.close();
 
             remove(path_records);
-            rename(folderpath, path_records);
+            rename(temp_array, path_records);
         }
         else {
             cerr << "Failed to open CSV file." << endl;
@@ -350,11 +352,15 @@ public:
     }
 
 
-    void deleteMemberRequest(char * path_requests, char* folderpath,string memberName) {
+    void deleteMemberRequest(string path_requests, string folderpath1,string memberName) {
+        cout << path_requests << endl;
+        
 
+        cout << folderpath1 << endl;
         ifstream inFile(path_requests);
-        ofstream tempFile(folderpath);
-        char *temppath = folderpath;
+        ofstream tempFile(folderpath1);
+        char *records_array = &path_requests[0];
+        char *temppath = &folderpath1[0];
         if (inFile.is_open() && tempFile.is_open()) {
             string line;
             while (getline(inFile, line)) {
@@ -370,8 +376,8 @@ public:
             }
             inFile.close();
             tempFile.close();
-            remove(path_requests);
-            rename(temppath, path_requests);
+            remove(records_array);
+            rename(temppath, records_array);
         }
         else {
             cerr << "Failed to open CSV file." << endl;
@@ -390,14 +396,12 @@ public:
         char* records_array = &path_records[0];
 
 
-        char* temp_array = &folderpath[0];
 
         // copying the contents of the 
         // string to char array 
 
 
 
-        char* requests_array = &path_requests[0];
 
         // copying the contents of the 
         // string to char array 
@@ -430,7 +434,7 @@ public:
             //cout << "Enter password to accept the request: ";
             //cin >> password;
             string expectedPassword = club + "123";
-            if (password != expectedPassword) {
+            if ((password != expectedPassword) && " " + password != expectedPassword) {
                 cout << "Incorrect password. Request not accepted." << endl;
                 return "Incorrect";
             }
@@ -446,7 +450,7 @@ public:
                 string club1 = it->second.club += "/" + club2;
                 cout << "Club: " << club1 << endl;
 
-                replaceMember(records_array,temp_array,name1, id1, club1);
+                replaceMember(records_array,folderpath,name1, id1, club1);
             }
             else {
                 ofstream recordsFile(path_records, ios::app);
@@ -458,14 +462,14 @@ public:
                 recordsFile.close();
             }
 
-            deleteMemberRequest(requests_array,temp_array,name);
+            deleteMemberRequest(path_requests,folderpath,name);
             cout << "Request accepted successfully." << endl;
             return "Request accepted successfully.";
         }
         else {
             cout << "Sorry your request has been rejected :(" << endl;
             
-            deleteMemberRequest(requests_array, temp_array, name);
+            deleteMemberRequest(path_requests, folderpath, name);
             return "Request rejected.";
         }
         return "done!";
