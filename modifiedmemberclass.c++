@@ -12,6 +12,7 @@ public:
     string name;
     string id;
     string club;
+    
 
     // Default constructor
     Member() : name(""), id(""), club("") {}
@@ -20,7 +21,45 @@ public:
     Member(const string& name, const string& id, const string& club)
         : name(name), id(id), club(club) {}
 
-   void searchbyName(unordered_map<string, Member>& hashtable) {
+unordered_map<string, Member> buildHashTable(const string& myfile, const string& key) {
+    ifstream file(myfile);
+    unordered_map<string, Member> hashtable;
+
+    if (!file.is_open()) {
+        cout << "File doesn't exist" << endl;
+        return hashtable;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        istringstream iss(line);
+        string name, id, club;
+
+        getline(iss, name, ',');
+        getline(iss, id, ',');
+        getline(iss, club);
+
+        Member student{name, id, club};
+        string k = (key == "id") ? id : (key == "club") ? club : name;
+
+        hashtable[k] = student;
+    }
+
+    file.close();
+    return hashtable;
+}
+void printHashTable(const unordered_map<string, Member>& hashtable) {
+    for (const auto& pair : hashtable) {
+        cout << "Key: " << pair.first 
+             << " | Name: " << pair.second.name 
+             << ", ID: " << pair.second.id 
+             << ", Club: " << pair.second.club << endl;
+    }
+}
+
+    unordered_map<string,Member>nametable=buildHashTable("C:\\Users\\DELL\\Desktop\\C++_files\\Records.csv","name");
+    unordered_map<string,Member>idtable=buildHashTable("C:\\Users\\DELL\\Desktop\\C++_files\\Records.csv","id");
+   void searchbyName() {
     //input buffer ko clear karne kelie and press enter to input
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -28,8 +67,8 @@ public:
     cout << "Enter name of the member: ";
     getline(cin, key); //getline so that spaces in the name can be ignored
    
-    auto it = hashtable.find(key);
-    if (it != hashtable.end()) {
+    auto it = nametable.find(key);
+    if (it != nametable.end()) {
         cout << "Member found!" << endl;
         cout << "Name: " << it->second.name << endl;
         cout << "ID: " << it->second.id << endl;
@@ -38,7 +77,7 @@ public:
         cout << "Member not found :(" << endl;
     }
 }
-void searchbyID(unordered_map<string, Member>& hashtable) {
+void searchbyID() {
    
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -46,8 +85,8 @@ void searchbyID(unordered_map<string, Member>& hashtable) {
     cout << "Enter id of the member: ";
     getline(cin, key); 
     
-    auto it = hashtable.find(key);
-    if (it != hashtable.end()) {
+    auto it = idtable.find(key);
+    if (it != idtable.end()) {
         cout << "Member found!" << endl;
         cout << "Name: " << it->second.name << endl;
         cout << "ID: " << it->second.id << endl;
@@ -132,47 +171,23 @@ void searchbyID(unordered_map<string, Member>& hashtable) {
 
         cout << "Member added successfully." <<endl;
     }
+
+    friend void printHashTable(const unordered_map<string, Member>& hashtable);
+
 };
 
-unordered_map<string, Member> buildHashTable(const string& myfile, const string& key) {
-    ifstream file(myfile);
-    unordered_map<string, Member> hashtable;
-
-    if (!file.is_open()) {
-        cout << "File doesn't exist" << endl;
-        return hashtable;
-    }
-
-    string line;
-    while (getline(file, line)) {
-        istringstream iss(line);
-        string name, id, club;
-
-        getline(iss, name, ',');
-        getline(iss, id, ',');
-        getline(iss, club);
-
-        Member student{name, id, club};
-        string k = (key == "id") ? id : (key == "club") ? club : name;
-
-        hashtable[k] = student;
-    }
-
-    file.close();
-    return hashtable;
-}
-void printHashTable(const unordered_map<string, Member>& hashtable) {
-    for (const auto& pair : hashtable) {
-        cout << "Key: " << pair.first 
-             << " | Name: " << pair.second.name 
-             << ", ID: " << pair.second.id 
-             << ", Club: " << pair.second.club << endl;
-    }
-}
 vector<string> returnKey(unordered_map<string,Member>&hashtable){
     vector<string> v;
     for(const auto& pair: hashtable){
         v.push_back(pair.first);
     }
     return v;
+}
+
+int main()
+{
+    Member M1;
+    
+
+    printHashTable(M1.nametable);
 }
