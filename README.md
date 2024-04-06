@@ -8,7 +8,7 @@
 
 ## Problem Statement
 
-You need to build a manager for all the DA-IICT clubs. The manager ensures that a club member can be looked up in minimum time. A member can either be a faculty or a student. One should be able to search by name, ID, specific club name, or club category (i.e., arts, science & technology, sports, culture). Note that the user of this manager may not be a DA-IICT-ian and, therefore, may not know the clubs’ names.
+You need to build a manager for all the DA-IICT clubs. The manager ensures that a club member can be looked up in minimum time. A member can either be a faculty or a student. One should be able to search by name, ID, specific club name, or club category (i.e., arts, science & technology, sports, culture). Note that the user of this manager may not be a DA-IICT-ian and, therefore, may not know the club names.
 
 _Made For_ <img src = "https://img.shields.io/badge/Windows-0078D4.svg?style=for-the-badge&logo=Windows&logoColor=white">
 
@@ -25,16 +25,15 @@ BackEnd: <img src = "https://img.shields.io/badge/C++-00599C.svg?style=for-the-b
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Page Color | ![#0f0f0f](https://via.placeholder.com/10/0f0f0f?text=+) #0f0f0f |
-| Button Color1 | ![#31a371](https://via.placeholder.com/10/31a371?text=+) #31a371 |
-| Button Color2 | ![#2c2c2c](https://via.placeholder.com/10/2c2c2c?text=+) #2c2c2c |
-| Table Color | ![#c6cdd3](https://via.placeholder.com/10/c6cdd3?text=+) #c6cdd3 |
+| Page Colour | ![#0f0f0f](https://via.placeholder.com/10/0f0f0f?text=+) #0f0f0f |
+| Accept Button Colour | ![#31a371](https://via.placeholder.com/10/31a371?text=+) #31a371 |
+| Reject Button Colour | ![#832A31](https://via.placeholder.com/10/832A31?text=+) #832A31 |
+| Menu Button Colour | ![#2c2c2c](https://via.placeholder.com/10/2c2c2c?text=+) #2c2c2c |
+| Table Colour | ![#c6cdd3](https://via.placeholder.com/10/c6cdd3?text=+) #c6cdd3 |
 
 
 ## Appendix
-Due to commit issues in the Old Existing Repo (https://github.com/DevarshVasani/DA-IICT-Club-Manager 
-
-We made a new one
+Due to commit issues in the [Old Existing Repo](https://github.com/DevarshVasani/DA-IICT-Club-Manager), We've made a new one
 
 ## Authors
 
