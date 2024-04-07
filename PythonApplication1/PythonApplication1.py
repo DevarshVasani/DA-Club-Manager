@@ -1,5 +1,8 @@
 ﻿from re import I
+<<<<<<<<< Temporary merge branch 1
+=========
 from tkinter.ttk import Progressbar
+>>>>>>>>> Temporary merge branch 2
 from turtle import update
 from sqlite3 import ProgrammingError
 from tkinter.font import BOLD
@@ -12,7 +15,9 @@ from tkcalendar import Calendar
 from tktimepicker import AnalogPicker, AnalogThemes, constants
 
 from PIL import Image, ImageTk
+from tkinter import messagebox
 from CTkTable import *
+>>>>>>>>> Temporary merge branch 2
 import superfastcode2
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -790,6 +795,8 @@ def main():
                 password_entry.place(relx = 0.5, rely = 0.7, anchor = "n")
         def request():
             
+            global user_entry,id_entry
+            
             name_member = user_entry.get()
             id_member = id_entry.get()
             club_member = club_box.get()
@@ -817,7 +824,7 @@ def main():
 
             
 
-        
+        global user_entry,id_entry
         
 
         
@@ -865,6 +872,7 @@ def main():
 
         
     
+
     def fillout(e):
         global listbox
         try:
@@ -936,8 +944,11 @@ def main():
                 for widger in request_frame.winfo_children():
                     widger.destroy()
                 listbox.destroy()
+                
             except:
+                
                 pass
+            
             
 
 
@@ -1079,6 +1090,10 @@ def main():
 
     
     
+
+>>>>>>>>> Temporary merge branch 2
+    
+    
     def update_request():
         
         try:
@@ -1088,9 +1103,11 @@ def main():
             pass
         def accept_window(i):
             
+           
             text_name = list_name[i]
             text_id = list_id[i]
-            text_club = list_club[i]
+            text_club = list_club[i]          
+
             
             def adding():
                 global list_name, list_club, list_id    
@@ -1316,9 +1333,7 @@ def main():
     
 
         Progressbar.start()
-        
-        label = ctk.CTkLabel(root, text="Building Hashtables and arrays.....", font=("Helvitica Neue", 20))
-        label.place(relx = 0.5, rely = 0.8, anchor = "n")
+>>>>>>>>> Temporary merge branch 2
         
         name_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "name")
         id_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "id")
@@ -1353,6 +1368,12 @@ def main():
     
 
     
+
+    
+<<<<<<<<< Temporary merge branch 1
+>>>>>>>>> Temporary merge branch 2
+=========
+>>>>>>>>> Temporary merge branch 2
     
 main()
 
