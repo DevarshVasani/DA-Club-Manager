@@ -1,5 +1,4 @@
-﻿from cProfile import label
-from re import I
+﻿from re import I
 from tkinter.ttk import Progressbar
 from turtle import update
 from sqlite3 import ProgrammingError
@@ -13,7 +12,9 @@ from tkcalendar import Calendar
 from tktimepicker import AnalogPicker, AnalogThemes, constants
 
 from PIL import Image, ImageTk
+from tkinter import messagebox
 from CTkTable import *
+
 import superfastcode2
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -134,7 +135,7 @@ def main():
         desc_label = ctk.CTkLabel(root, text="ABOUT US:",fg_color="#0f0f0f", font=("Helvetica", 30, "bold", "underline"), justify="left", wraplength=380)
         desc_label.place(x=290, y=200)
 
-        info_text = """-> Community of people who are actively learning about AI and implementing related things�.
+        info_text = """-> Community of people who are actively learning about AI and implementing related things .
         
 -> We provide them proper guidance about tactics and other aspects of the game 
 
@@ -207,7 +208,7 @@ def main():
         
 -> AI club is a community where students interested in artificial intelligence come together to learn, collaborate on projects and attend workshops. 
 
--> It also allows students engage with industry experts to explore and advance their�skills�in�AI.
+-> It also allows students engage with industry experts to explore and advance their skills in AI.
 
 """
 
@@ -352,7 +353,7 @@ def main():
 
 -> We encourage them to develop their skills and provide them platform by conducting various tournaments and making them participate in inter college tournaments.
 
--> We don�t only have performers, but also wonderful script writers, directors, composers, etc., but first, we are a group of crazy and dedicated learners.
+-> We don t only have performers, but also wonderful script writers, directors, composers, etc., but first, we are a group of crazy and dedicated learners.
 """
 
         
@@ -557,7 +558,7 @@ def main():
 
         info_text = """-> PMMC or Photography and moviemaking club as the name suggest we are the photographer and video makers.
         
--> We, as the members of the club, seek to display our love of photography through capturing our college�s events and festivals.
+-> We, as the members of the club, seek to display our love of photography through capturing our college s events and festivals.
 
 -> To encourage people we organize Photo and Design Exhibitions, Photography walks, sessions on photography and film making, also tries to provide hands on sessions.
 
@@ -783,9 +784,13 @@ def main():
         
         root1.geometry("650x300")
         root1.title("Send Request")
+        
+        
             
             
         def request():
+            
+            global user_entry,id_entry
             
             name_member = user_entry.get()
             id_member = id_entry.get()
@@ -805,7 +810,7 @@ def main():
 
             
 
-        
+        global user_entry,id_entry
         
 
         
@@ -826,16 +831,33 @@ def main():
         
         box_var = ctk.StringVar(value=list_clubsrequest[0])
 
+            
         club_box = ctk.CTkComboBox(root1, values=list_clubsrequest)
         club_box.place(relx = 0.5, rely = 0.6, anchor = "n")
         
-        submit_button = ctk.CTkButton(root1, text="Send Request", corner_radius=50, width=70, text_color="black", command = request)
+        def check_request():
+            if(user_entry.get() == "" or id_entry.get() == "" ):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+            else:
+                request()
+
+                
+            
+        
+        submit_button = ctk.CTkButton(root1, text="Send Request", corner_radius=50, width=70, text_color="black", command = check_request)
         submit_button.place(relx = 0.5, rely = 0.8, anchor = "n")
         
         root1.mainloop()
 
         
     
+
     def fillout(e):
         global listbox
         try:
@@ -854,6 +876,8 @@ def main():
         except:
             pass
         
+        listbox = CTkListbox(root, width = 700)
+        listbox.place(x=100, y = 175)
         
 
         
@@ -883,7 +907,19 @@ def main():
          
         
         
-    
+    def check_search():
+        name_search = search_bar.get()
+        if(name_search == ""):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+        else:
+            search()
+
     def search():
 
 
@@ -894,8 +930,11 @@ def main():
                 for widger in request_frame.winfo_children():
                     widger.destroy()
                 listbox.destroy()
+                
             except:
+                
                 pass
+            
             
 
 
@@ -979,8 +1018,18 @@ def main():
 
         event_club = ctk.CTkComboBox(request_frame, values=list_clubsrequest)
         event_club.pack(pady=10)
-        
-        submit_event = ctk.CTkButton(request_frame, text="Submit", corner_radius=50, width=300, text_color="black", command=submit_event)
+        def check_submit_event():
+            if(event_name.get() == "" or event_club.get() == "" or event_venue.get() == ""):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+            else:
+                submit_event()
+        submit_event = ctk.CTkButton(request_frame, text="Submit", corner_radius=50, width=300, text_color="black", command=check_submit_event)
         submit_event.pack(pady=10)
         
 
@@ -993,13 +1042,6 @@ def main():
 
     
     
-    help_button.place(relx = 0.05, rely = 0.6)
-    
-    request_frame = ctk.CTkScrollableFrame(root,fg_color="#0f0f0f", width=721, height=500, border_width=0,corner_radius=0)
-    request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
-    
-    
-    
     def update_request():
         
         try:
@@ -1009,9 +1051,11 @@ def main():
             pass
         def accept_window(i):
             
+           
             text_name = list_name[i]
             text_id = list_id[i]
-            text_club = list_club[i]
+            text_club = list_club[i]          
+
             
             def adding():
                 global list_name, list_club, list_id    
@@ -1021,7 +1065,9 @@ def main():
                 if outrequest == "Request accepted successfully.":
                     list_name = member.readName(os.path.dirname(__file__) + "\Requests.csv")
                     list_id = member.readId(os.path.dirname(__file__) + "\Requests.csv")
-                    list_club = member.readClub(os.path.dirname(__file__) + "\Requests.csv")    
+                    list_club = member.readClub(os.path.dirname(__file__) + "\Requests.csv")   
+                    
+                    autofill.append(text_name)
                     
                     update_request()
                     root2.destroy()
@@ -1036,7 +1082,23 @@ def main():
             password = ctk.CTkEntry(root2, width=300, placeholder_text="Enter password", show = "*", border_width=2, font=('Helvetica', 16))
             password.place(relx = 0.5, rely = 0.2, anchor = "n")
             
-            submit_pass = ctk.CTkButton(root2, text="Submit", corner_radius=50, width=70, text_color="black", command=adding)
+            def check_adding():
+                
+                if (password.get() != list_club[i] + "123") or (" " +password.get() != list_club[i] + "123"):
+                    popup = ctk.CTkToplevel(root)
+                    popup.title("Popup Window")
+                    popup.geometry("300x100")
+                    label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                    label.pack(pady=10)
+                    close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                    close_button.pack()
+                else:
+                    adding()
+            
+            
+                
+            
+            submit_pass = ctk.CTkButton(root2, text="Submit", corner_radius=50, width=70, text_color="black", command= check_adding)
             submit_pass.place(relx = 0.5, rely = 0.5, anchor = "n")
             
             root2.mainloop()
@@ -1052,11 +1114,20 @@ def main():
                     print(list_club[i] + "123")
                     passwordreject.get()
                     if (passwordreject.get() == list_club[i] + "123") or (" " +passwordreject.get() == list_club[i] + "123"):
+              
                         tempfilepath = os.path.dirname(__file__) + "\ctemp.csv"
                         outrequest = member.delete_request(os.path.dirname(__file__) + "\Requests.csv",tempfilepath,text_name)
                         print(outrequest)
                         update_request()
-                        
+                    else:
+                        popup = ctk.CTkToplevel(root)
+                        popup.title("Popup Window")
+                        popup.geometry("300x100")
+                        label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                        label.pack(pady=10)
+                        close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                        close_button.pack()
+                       
                         
                         
                         root3.destroy()
@@ -1154,7 +1225,7 @@ def main():
     
         autofill = superfastcode2.autokeys(name_hashtable)
     
-        search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,command=search, width=70, text_color="black")
+        search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,width=70, text_color="black",command = check_search)
         search_button.place(relx = 0.83, rely = 0.25, anchor = "n")
 
         access_frame = ctk.CTkFrame(root, width=280, height=500, border_width=0, fg_color="#0f0f0f",corner_radius=0)
