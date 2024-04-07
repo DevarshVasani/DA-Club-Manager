@@ -50,7 +50,12 @@ Due to commit issues in the [Old Existing Repo](https://github.com/DevarshVasani
 
 ## Program Screenshots
 
+<img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Program%20Screenshots/ba2778d3-8cba-4e69-a6b2-bdd6863dc290.jpeg"> 
+<img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Program%20Screenshots/IMG_7096.png">
 <img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/b683ed3b5533505fef983d61e0220574f1090eb4/Program%20Screenshots/Club%20Join%20Requests.PNG">
 <img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Program%20Screenshots/Events.JPG">
 <img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Program%20Screenshots/Member%20Search.PNG">
+<img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Program%20Screenshots/IMG_7094.png">
+<img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Program%20Screenshots/IMG_7097.png">
+
 
