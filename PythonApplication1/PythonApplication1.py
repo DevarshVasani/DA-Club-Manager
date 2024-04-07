@@ -25,6 +25,7 @@ root.geometry("1020x700")
 
 
 def main():
+    global autofill
     def back_again():
     
          back_to_pavillion()
@@ -326,7 +327,7 @@ def main():
             pass
         
 
-        image_path = "C:\\Club Manager\\Club Manager\\icons\DTG Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\DTG Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -396,7 +397,7 @@ def main():
             pass
         
 
-        image_path = "\icons\khelaiya.png"  # Change this to your image path
+        image_path = "C:\\Club Manager\icons\khelaiya.png"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -466,7 +467,7 @@ def main():
             pass
         
 
-        image_path = "C:\\Club Manager\\Club Manager\\icons\Press Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\Press Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -535,7 +536,7 @@ def main():
             pass
         
 
-        image_path = "C:\\Club Manager\\Club Manager\\icons\pmmc.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\pmmc.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -602,7 +603,7 @@ def main():
             pass
         
 
-        image_path = "C:\\Club Manager\\Club Manager\\icons\Research Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\Research Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -677,7 +678,7 @@ def main():
             pass
         
 
-        image_path = "C:\\Club Manager\\Club Manager\\icons\Programming Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\Programming Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -806,7 +807,7 @@ def main():
                     
                     
             
-            member.member_request("C:\\Club Manager\\Club Manager\\Requests.csv",name_member, id_member, club_member)
+            member.member_request("C:\\Club Manager\\Requests.csv",name_member, id_member, club_member)
 
             root1.destroy()
             list_name.append(name_member)
@@ -908,29 +909,19 @@ def main():
             except:
                 pass
         else:
-        
+            print(autofill)
             for item in autofill:
                  if type.lower() in item.lower():
                      listbox.insert(i, item)
                      i = i+1
                  
-    def check_search():
-        name_search = search_bar.get()
-        if(name_search == ""):
-                popup = ctk.CTkToplevel(root)
-                popup.title("Popup Window")
-                popup.geometry("200x100")
-                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
-                label.pack(pady=10)
-                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
-                close_button.pack()
-        else:
-            search()
+    
          
         
         
     
     def search():
+        global name_hashtable, autofill
 
 
         name_search = search_bar.get()
@@ -966,8 +957,14 @@ def main():
         
         if list != []:
             def delete_member1():
+                global name_hashtable, autofill
                 def final_delete():
-                      x = member.delete_member("C:\\Club Manager\\Club Manager\\Records.csv", "C:\\Club Manager\\Club Manager\\ctemp.csv", password.get(),name_search)
+                      global name_hashtable, autofill  
+                      x = member.delete_member("C:\\Club Manager\\Records.csv", "C:\\Club Manager\\ctemp.csv", password.get(),name_search)
+                      name_hashtable = superfastcode2.buildHashTable("C:\\Club Manager\\Records.csv", "name")
+
+                      autofill = superfastcode2.autokeys(name_hashtable)
+                      
                       temproot.destroy()
                 temproot = ctk.CTk()
                 temproot.geometry("650x350")
@@ -977,6 +974,11 @@ def main():
 
                 submit_button  = ctk.CTkButton(temproot, text="submit", font=("Times New Roman", 20), command = final_delete)
                 submit_button.place(relx = 0.5, rely = 0.4, anchor = "n")
+                
+                
+                print(autofill)
+
+                
 
                 temproot.mainloop()
             
@@ -998,11 +1000,22 @@ def main():
     
 
     
-    
+    def check_search():
+        name_search = search_bar.get()
+        if(name_search == ""):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+        else:
+            search()
     def addEvent():
         
 
-        event.delete_expired_events("C:\\Club Manager\\Club Manager\\Events.csv", "C:\\Club Manager\\Club Manager\\ctemp.csv")
+        event.delete_expired_events("C:\\Club Manager\\Events.csv", "C:\\Club Manager\\ctemp.csv")
 
 
         try:
@@ -1023,7 +1036,7 @@ def main():
             
             event_club1 = event_club.get()
             
-            event.add_event("C:\\Club Manager\\Club Manager\\Events.csv",event_name1, event_venue1, event_date1 +" " + timing, event_club1)
+            event.add_event("C:\\Club Manager\\Events.csv",event_name1, event_venue1, event_date1 +" " + timing, event_club1)
             
             print(event_name1, event_venue1, event_date1, event_time1, event_club1)
             back_to_pavillion()
@@ -1059,8 +1072,8 @@ def main():
 
         event_club = ctk.CTkComboBox(request_frame, values=list_clubsrequest)
         event_club.pack(pady=10)
-
-        def check_submit_event():
+        
+        def check_submit_event1():
             if(event_name.get() == "" or event_club.get() == "" or event_venue.get() == ""):
                 popup = ctk.CTkToplevel(root)
                 popup.title("Popup Window")
@@ -1071,8 +1084,8 @@ def main():
                 close_button.pack()
             else:
                 submit_event()
-        submit_event = ctk.CTkButton(request_frame, text="Submit", corner_radius=50, width=300, text_color="black", command=check_submit_event)
-        submit_event.pack(pady=10)
+        submit_event1 = ctk.CTkButton(request_frame, text="Submit", corner_radius=50, width=300, text_color="black", command=check_submit_event1)
+        submit_event1.pack(pady=10)
         
        
         
@@ -1090,6 +1103,10 @@ def main():
     
     
     def update_request():
+        global list_name, list_club, list_id, autofill, name_hashtable
+        list_name = member.readName("C:\\Club Manager\\Requests.csv")
+        list_id = member.readId("C:\\Club Manager\\Requests.csv")
+        list_club = member.readClub("C:\\Club Manager\\Requests.csv")
         
         try:
             for widget in request_frame.winfo_children():
@@ -1097,6 +1114,7 @@ def main():
         except:
             pass
         def accept_window(i):
+            global autofill, name_hashtable
             
            
             text_name = list_name[i]
@@ -1105,16 +1123,19 @@ def main():
 
             
             def adding():
-                global list_name, list_club, list_id    
+                
+                global list_name, list_club, list_id , autofill, name_hashtable
                 print(password.get())
-                outrequest = member.member_accept("C:\\Club Manager\\Club Manager\\Records.csv","C:\\Club Manager\\Requests.csv","C:\\Club Manager\\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
+                outrequest = member.member_accept("C:\\Club Manager\\Records.csv","C:\\Club Manager\\Requests.csv","C:\\Club Manager\\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
                 print(outrequest)
                 if outrequest == "Request accepted successfully.":
                     list_name = member.readName("C:\\Club Manager\\Requests.csv")
                     list_id = member.readId("C:\\Club Manager\\Requests.csv")
                     list_club = member.readClub("C:\\Club Manager\\Requests.csv")   
+                    print(list_name)
                     
                     autofill.append(text_name)
+                    name_hashtable = superfastcode2.buildHashTable("C:\\Club Manager\\Records.csv", "name")
                     
                     update_request()
                     root2.destroy()
@@ -1131,7 +1152,7 @@ def main():
             
             def check_adding():
            
-                if (password.get() != list_club[i] + "123") or (" " +password.get() != list_club[i] + "123"):
+                if (password.get() != list_club[i] + "123"):
                     popup = ctk.CTkToplevel(root)
                     popup.title("Popup Window")
                     popup.geometry("300x100")
@@ -1159,10 +1180,11 @@ def main():
                     passwordreject.get()
                     if (passwordreject.get() == list_club[i] + "123") or (" " +passwordreject.get() == list_club[i] + "123"):
               
-                        tempfilepath = "C:\manager\ctemp.csv"
-                        outrequest = member.delete_request( "C:\manager\Requests.csv",tempfilepath,text_name)
+                        tempfilepath = "C:\\Club Manager\ctemp.csv"
+                        outrequest = member.delete_request( "C:\\Club Manager\Requests.csv",tempfilepath,text_name)
                         print(outrequest)
                         update_request()
+                        root3.destroy()
                     else:
                         popup = ctk.CTkToplevel(root)
                         popup.title("Popup Window")
@@ -1172,7 +1194,7 @@ def main():
                         close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
                         close_button.pack()
                         
-                        root3.destroy()
+                        
                     
                 root3 = ctk.CTk()
                 root3.geometry("350x200")
@@ -1237,10 +1259,24 @@ def main():
             reject_button = ctk.CTkButton(request_frame, text="Reject", corner_radius=50, width=70, text_color="black", fg_color="#d61f2c", hover_color="#89131c", command=reject_window)
             reject_button.grid(row = i+2, column = 5, pady=10, padx=10)
     
+
+    def helpplease():
+        temptemproot = ctk.CTk()
+        
+        label_help = ctk.CTkLabel(temptemproot, text="Please give us 10 pointer"
+                                  , font=('Century Gothic bold', 30))
+        label_help.pack(pady=10)
+        
+        close = ctk.CTkButton(temptemproot, text="Close", command=temptemproot.destroy)
+        close.pack(pady=10)
+        
+        temptemproot.mainloop()
+        
+
     
     def back_to_pavillion():
         
-        global title_frame,search_bar,search_frame,search_button,autofill,club_button,help_button,request_frame,access_frame,home_button,sendrequest_button,add_event
+        global title_frame,search_bar,search_frame,search_button,autofill,club_button,help_button,request_frame,access_frame,home_button,sendrequest_button,add_event, autofill
         
         try:
             for widget in root.winfo_children():
@@ -1263,10 +1299,7 @@ def main():
     
         search_bar.bind("<KeyRelease>", check)
 
-    
-    
-        autofill = superfastcode2.autokeys(name_hashtable)
-    
+        
         search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,command=check_search, width=70, text_color="black")
         search_button.place(relx = 0.83, rely = 0.25, anchor = "n")
 
@@ -1285,7 +1318,7 @@ def main():
         sendrequest_button = ctk.CTkButton(access_frame, text="Request to join club",fg_color="#242424",cursor="hand2", width=250,height = 50, command=member_request)
         sendrequest_button.place(relx = 0.05, rely = 0.6)
     
-        help_button = ctk.CTkButton(access_frame, text="Help",fg_color="#242424",cursor="hand2", width=250,height = 50)
+        help_button = ctk.CTkButton(access_frame, text="Help Us",fg_color="#242424",cursor="hand2", width=250,height = 50, command=helpplease)
         help_button.place(relx = 0.05, rely = 0.75)
         
     
@@ -1294,9 +1327,9 @@ def main():
         request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
         list_eventname = superfastcode2.readAllClubEvents("C:\\Club Manager\\Events.csv")
         list_eventvenue = superfastcode2.readAllClubVenues("C:\\Club Manager\\Events.csv")
-        list_eventdate = superfastcode2.readAllDate("C:\\Events.csv")
-        list_eventclub = superfastcode2.readAllClubNames("C:\\Events.csv")
-    
+        list_eventdate = superfastcode2.readAllDate("C:\\Club Manager\\Events.csv")
+        list_eventclub = superfastcode2.readAllClubNames("C:\\Club Manager\\Events.csv")
+        autofill = superfastcode2.autokeys(name_hashtable)
         values = [["No.", "Event Name", "Date and time", "Venue", "Club"]]
     
         for i in range(len(list_eventname)):
@@ -1313,6 +1346,7 @@ def main():
     
         show_requests = ctk.CTkButton(request_frame, text="Show Requests", corner_radius=50, width=710, height = 30, text_color="black", command=update_request)
         show_requests.grid(row = 0, column = 0, pady=5, padx=5)
+        
     
     def main_screen():
         global name_hashtable, id_hashtable, member, event, validation, list_clubsrequest
@@ -1329,19 +1363,19 @@ def main():
 
         Progressbar.start()
         
-        name_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "name")
-        id_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "id")
+        name_hashtable = superfastcode2.buildHashTable("C:\\Club Manager\\Records.csv", "name")
+        id_hashtable = superfastcode2.buildHashTable("C:\\Club Manager\\Records.csv", "id")
         member = superfastcode2.Member()
         event = superfastcode2.Event()
         
         global list_name, list_id, list_club
-        list_name = member.readName("C:\\Requests.csv")
-        list_id = member.readId("C:\\Requests.csv")
-        list_club = member.readClub("C:\\Requests.csv")
+        list_name = member.readName("C:\\Club Manager\\Requests.csv")
+        list_id = member.readId("C:\\Club Manager\\Requests.csv")
+        list_club = member.readClub("C:\\Club Manager\\Requests.csv")
         validation = False
     
         global list_clubsrequest
-        list_clubsrequest = ['quiz', 'chess', 'dance', 'music', 'drama', 'coding']
+        list_clubsrequest = ['ai', 'business', 'chess', 'cubing', 'dadc', 'debsoc', 'dtg', 'flim', 'incubation', 'khelaiya', 'music', 'pmmc', 'press', 'programming', 'research']
         
         root.after(1500, back_to_pavillion)
         
@@ -1351,17 +1385,6 @@ def main():
         
     main_screen()
  
-    
-
-
-    
-    
-    
-
-
-    
-
-    
 
     
 
