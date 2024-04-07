@@ -854,8 +854,6 @@ def main():
         except:
             pass
         
-        listbox = CTkListbox(root, width = 700)
-        listbox.place(x=100, y = 175)
         
 
         
@@ -993,6 +991,13 @@ def main():
     
     
 
+    
+    
+    help_button.place(relx = 0.05, rely = 0.6)
+    
+    request_frame = ctk.CTkScrollableFrame(root,fg_color="#0f0f0f", width=721, height=500, border_width=0,corner_radius=0)
+    request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
+    
     
     
     def update_request():
