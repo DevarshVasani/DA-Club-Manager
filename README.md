@@ -10,15 +10,14 @@
 
 You need to build a manager for all the DA-IICT clubs. The manager ensures that a club member can be looked up in minimum time. A member can either be a faculty or a student. One should be able to search by name, ID, specific club name, or club category (i.e., arts, science & technology, sports, culture). Note that the user of this manager may not be a DA-IICT-ian and, therefore, may not know the club names.
 
-_Made For_ <img src = "https://img.shields.io/badge/Windows-0078D4.svg?style=for-the-badge&logo=Windows&logoColor=white">
 
 ## Technologies used
 
-FrontEnd: <img src = "https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white">
+Frontend: <p align="left"> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer">
 
-BackEnd: <img src = "https://img.shields.io/badge/C++-00599C.svg?style=for-the-badge&logo=C++&logoColor=white">
+Backend: 
 
-
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
 
 
 ## Color Reference
@@ -33,7 +32,12 @@ BackEnd: <img src = "https://img.shields.io/badge/C++-00599C.svg?style=for-the-b
 
 
 ## Appendix
+
+
+<img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Windows%20Badge/White%20-%20Blue%20(Inverted).png" width="125" height="35">
+
 Due to commit issues in the [Old Existing Repo](https://github.com/DevarshVasani/DA-IICT-Club-Manager), We've made a new one
+
 
 ## Authors
 
