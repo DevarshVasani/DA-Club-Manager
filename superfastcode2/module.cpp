@@ -70,14 +70,17 @@ public:
         cout << "Event added successfully." << endl;
     }
 
-    void deleteExpiredEvents() {
+    void deleteExpiredEvents(string path_events, string path_temp) {
         //Getting current time
         auto now = chrono::system_clock::now();
         time_t currentTime = chrono::system_clock::to_time_t(now);
 
 
-        ifstream inFile("Events.csv");
-        ofstream tempFile("temp.csv");
+        ifstream inFile(path_events);
+        ofstream tempFile(path_temp);
+
+        char* array_events = &path_events[0];
+        char* temp_array = &path_temp[0];
         if (!inFile.is_open() || !tempFile.is_open()) {
             cerr << "Failed to open CSV file." << endl;
             return;
@@ -115,8 +118,8 @@ public:
         tempFile.close();
 
 
-        remove("D://capstone//Events.csv");
-        rename("D://capstone//temp.csv", "D://capstone//Events.csv");
+        remove(array_events);
+        rename(temp_array, array_events);
 
         cout << "Expired events deleted successfully." << endl;
     }
@@ -278,20 +281,22 @@ public:
 
 
     // Delete member function
-    void deleteMemberByName() {
-        string password;
-        cout << "Enter password (consists of six digits): ";
-        cin >> password;
+    void deleteMemberByName(string path_records,string path_temp, string password, string memberName) {
+        //string password;
+        //cout << "Enter password (consists of six digits): ";
+        //cin >> password;
+        char *array_records = &path_records[0];
+        char* temp_records = &path_temp[0];
         if (password != "123456") {
             cout << "Incorrect password. Access denied." << endl;
             return;
         }
 
-        ifstream inFile("D://capstone//Records.csv");
-        ofstream tempFile("temp.csv");
-        string memberName;
-        cout << "Enter the name of the member to be deleted: ";
-        cin >> memberName;
+        ifstream inFile(path_records);
+        ofstream tempFile(path_temp);
+        //string memberName;
+        //cout << "Enter the name of the member to be deleted: ";
+        //cin >> memberName;
         if (inFile.is_open() && tempFile.is_open()) {
             string line;
             while (getline(inFile, line)) {
@@ -307,8 +312,8 @@ public:
             }
             inFile.close();
             tempFile.close();
-            remove("D://capstone//Records.csv");
-            rename("temp.csv", "D://capstone//Records.csv");
+            remove(array_records);
+            rename(temp_records, array_records);
             cout << "Member deleted successfully." << endl;
         }
         else {
@@ -361,6 +366,9 @@ public:
         ofstream tempFile(folderpath1);
         char *records_array = &path_requests[0];
         char *temppath = &folderpath1[0];
+
+        cout << inFile.is_open() << endl;
+        cout << tempFile.is_open() << endl;
         if (inFile.is_open() && tempFile.is_open()) {
             string line;
             while (getline(inFile, line)) {
@@ -387,7 +395,7 @@ public:
     }
 
 
-    string acceptRequests(string path_records, string path_requests,string folderpath,unordered_map<string, Member>& nametable,string name, string id, string club, string password) {// = buildHashTable("D://capstone//Records.csv", "name");
+    string acceptRequests(string path_records, string path_requests1,string folderpath,unordered_map<string, Member>& nametable,string name, string id, string club, string password) {// = buildHashTable("D://capstone//Records.csv", "name");
 
         printHashTable(nametable);
 
@@ -407,7 +415,7 @@ public:
         // string to char array 
 
 
-        ifstream requestFile(path_requests);
+        ifstream requestFile(path_requests1);
         if (!requestFile.is_open()) {
             cerr << "Failed to open Requests file." << endl;
             return "Failed to open Requests file.";
@@ -462,14 +470,14 @@ public:
                 recordsFile.close();
             }
 
-            deleteMemberRequest(path_requests,folderpath,name);
+            deleteMemberRequest(path_requests1,folderpath,name);
             cout << "Request accepted successfully." << endl;
             return "Request accepted successfully.";
         }
         else {
             cout << "Sorry your request has been rejected :(" << endl;
             
-            deleteMemberRequest(path_requests, folderpath, name);
+            deleteMemberRequest(path_requests1, folderpath, name);
             return "Request rejected.";
         }
         return "done!";
@@ -511,7 +519,7 @@ public:
         cout << "Member added successfully." << endl;
     }
 
-    string sendRequests(string path_requests,string name, string id, string club) {
+    string sendRequests(string path_requests11,string name, string id, string club) {
 
         //cin.ignore(numeric_limits<streamsize>::max(), '\n');
         //cout << "Enter name of the member: ";
@@ -523,7 +531,7 @@ public:
         //getline(cin, club);
 
 
-        ofstream file(path_requests, ios::app);
+        ofstream file(path_requests11, ios::app);
         if (!file.is_open()) {
             cerr << "Failed to open CSV file." << endl;
             return "Failed to open CSV file.";
@@ -624,7 +632,7 @@ unordered_map<string, Member> buildHashTable(const string& myfile, const string&
 
         getline(iss, name, ',');
         getline(iss, id, ',');
-        getline(iss, club);
+        getline(iss, club);;
 
         Member student{ name, id, club };
         string k = (key == "id") ? id : (key == "club") ? club : name;
@@ -665,6 +673,8 @@ PYBIND11_MODULE(superfastcode2, m) {
         .def("readName", &Member::readName)
         .def("readId", &Member::readId)
         .def("readClub", &Member::readClub)
+        .def("delete_member", &Member::deleteMemberByName)
+
         .def("delete_request", &Member::deleteMemberRequest)
         .def("search_by_name", &Member::searchbyName);
 

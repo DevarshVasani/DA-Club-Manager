@@ -1,5 +1,4 @@
-﻿from cProfile import label
-from re import I
+﻿from re import I
 from tkinter.ttk import Progressbar
 from turtle import update
 from sqlite3 import ProgrammingError
@@ -45,7 +44,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\Chess Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\Chess Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -114,7 +113,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\AI Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\AI Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -134,7 +133,7 @@ def main():
         desc_label = ctk.CTkLabel(root, text="ABOUT US:",fg_color="#0f0f0f", font=("Helvetica", 30, "bold", "underline"), justify="left", wraplength=380)
         desc_label.place(x=290, y=200)
 
-        info_text = """-> Community of people who are actively learning about AI and implementing related things�.
+        info_text = """-> Community of people who are actively learning about AI and implementing related things .
         
 -> We provide them proper guidance about tactics and other aspects of the game 
 
@@ -183,7 +182,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\Business Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\Business Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -207,7 +206,7 @@ def main():
         
 -> AI club is a community where students interested in artificial intelligence come together to learn, collaborate on projects and attend workshops. 
 
--> It also allows students engage with industry experts to explore and advance their�skills�in�AI.
+-> It also allows students engage with industry experts to explore and advance their skills in AI.
 
 """
 
@@ -252,7 +251,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\DADC.jpg"  # Change this to your image path
+        image_path = "C:\\icons\DADC.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -326,7 +325,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\DTG Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\DTG Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -352,7 +351,7 @@ def main():
 
 -> We encourage them to develop their skills and provide them platform by conducting various tournaments and making them participate in inter college tournaments.
 
--> We don�t only have performers, but also wonderful script writers, directors, composers, etc., but first, we are a group of crazy and dedicated learners.
+-> We don t only have performers, but also wonderful script writers, directors, composers, etc., but first, we are a group of crazy and dedicated learners.
 """
 
         
@@ -396,7 +395,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\khelaiya.png"  # Change this to your image path
+        image_path = "\icons\khelaiya.png"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -466,7 +465,7 @@ def main():
             pass
         
 
-        image_path = r"C:\capstone\Club ICNs\Press Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\Press Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -535,7 +534,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\pmmc.jpg"  # Change this to your image path
+        image_path = "C:\\icons\pmmc.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -557,7 +556,7 @@ def main():
 
         info_text = """-> PMMC or Photography and moviemaking club as the name suggest we are the photographer and video makers.
         
--> We, as the members of the club, seek to display our love of photography through capturing our college�s events and festivals.
+-> We, as the members of the club, seek to display our love of photography through capturing our college s events and festivals.
 
 -> To encourage people we organize Photo and Design Exhibitions, Photography walks, sessions on photography and film making, also tries to provide hands on sessions.
 
@@ -602,7 +601,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\Research Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\Research Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -677,7 +676,7 @@ def main():
             pass
         
 
-        image_path = os.path.dirname(__file__) + "\icons\Programming Club.jpg"  # Change this to your image path
+        image_path = "C:\\icons\Programming Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -781,17 +780,30 @@ def main():
         
         root1 = ctk.CTk()
         
-        root1.geometry("650x300")
+        root1.geometry("650x350")
         root1.title("Send Request")
             
-            
+        def facultypassword():
+            global password_entry
+            if checkbox_faculty.get() == 1:
+                password_entry = ctk.CTkEntry(root1, width=300, placeholder_text="Enter your password", border_width=2, font=('Helvetica', 16))
+                password_entry.place(relx = 0.5, rely = 0.7, anchor = "n")
         def request():
             
             name_member = user_entry.get()
             id_member = id_entry.get()
             club_member = club_box.get()
             
-            member.member_request(os.path.dirname(__file__) + "\Requests.csv",name_member, id_member, club_member)
+            if check_var.get() == 1:
+                name_member = name_member + " (Faculty)"
+                password = password_entry.get()
+                if password == "faculty":
+                    pass
+                
+                    
+                    
+            
+            member.member_request("C:\\Requests.csv",name_member, id_member, club_member)
 
             root1.destroy()
             list_name.append(name_member)
@@ -810,27 +822,44 @@ def main():
 
         
         user_entry = ctk.CTkEntry(root1, width=300, placeholder_text="Enter your name", border_width=2, font=('Helvetica', 16))
-        user_entry.place(relx = 0.5, rely = 0.2, anchor = "n")
+        user_entry.place(relx = 0.5, rely = 0.1, anchor = "n")
         
 
         
         id_entry = ctk.CTkEntry(root1, width=300, placeholder_text="Enter your ID", border_width=2, font=('Helvetica', 16))
-        id_entry.place(relx = 0.5, rely = 0.4, anchor = "n")
+        id_entry.place(relx = 0.5, rely = 0.25, anchor = "n")
+        
+        check_var = ctk.IntVar(value=0)
+
+        checkbox_faculty = ctk.CTkCheckBox(root1, text="Are you a Faculty", font=("Times New Roman", 18), variable=check_var, onvalue = 1, offvalue=0, command=facultypassword)
+        checkbox_faculty.place(relx = 0.5, rely = 0.4, anchor = "n")
         
         
         
 
 
         club_label = ctk.CTkLabel(root1, text="Select club : ", font=("Times New Roman", 20))
-        club_label.place(relx = 0.2, rely = 0.6)
+        club_label.place(relx = 0.2, rely = 0.55)
         
         box_var = ctk.StringVar(value=list_clubsrequest[0])
+        
+        def check_request():
+            if(user_entry.get() == "" or id_entry.get() == "" ):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+            else:
+                request()
 
         club_box = ctk.CTkComboBox(root1, values=list_clubsrequest)
-        club_box.place(relx = 0.5, rely = 0.6, anchor = "n")
+        club_box.place(relx = 0.5, rely = 0.55, anchor = "n", )
         
-        submit_button = ctk.CTkButton(root1, text="Send Request", corner_radius=50, width=70, text_color="black", command = request)
-        submit_button.place(relx = 0.5, rely = 0.8, anchor = "n")
+        submit_button = ctk.CTkButton(root1, text="Send Request", corner_radius=50, width=70, text_color="black", command = check_request)
+        submit_button.place(relx = 0.5, rely = 0.85, anchor = "n")
         
         root1.mainloop()
 
@@ -881,7 +910,18 @@ def main():
                      listbox.insert(i, item)
                      i = i+1
                  
-
+    def check_search():
+        name_search = search_bar.get()
+        if(name_search == ""):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+        else:
+            search()
          
         
         
@@ -910,7 +950,28 @@ def main():
     
         print(list)
         
+        
+            
+            
+            
+            
+
+        
         if list != []:
+            def delete_member1():
+                def final_delete():
+                      x = member.delete_member("C:\\Records.csv", "C:\\ctemp.csv", password.get(),name_search)
+                      temproot.destroy()
+                temproot = ctk.CTk()
+                temproot.geometry("650x350")
+            
+                password = ctk.CTkEntry(temproot, width=300, placeholder_text="Enter password", show = "*", border_width=2, font=('Helvetica', 16))
+                password.place(relx = 0.5, rely = 0.2, anchor = "n")
+
+                submit_button  = ctk.CTkButton(temproot, text="submit", font=("Times New Roman", 20), command = final_delete)
+                submit_button.place(relx = 0.5, rely = 0.4, anchor = "n")
+
+                temproot.mainloop()
             
             found_label = ctk.CTkLabel(request_frame, text="Member Found", font=("Times New Roman", 20))
             found_label.pack(padx= 15, pady = 51)
@@ -922,6 +983,9 @@ def main():
         
             club_label = ctk.CTkLabel(request_frame, text=f"Club : {list[2]}", font=("Times New Roman", 20))
             club_label.pack(padx= 5, pady = 15)
+            
+            delete_button = ctk.CTkButton(request_frame, text="delete", font=("Times New Roman", 20), command = delete_member1)
+            delete_button.pack(padx = 5, pady = 15)
         
             
     
@@ -930,6 +994,10 @@ def main():
     
     def addEvent():
         
+
+        event.delete_expired_events("C:\\Events.csv", "C:\\ctemp.csv")
+
+
         try:
             for widget in request_frame.winfo_children():
                 widget.destroy()
@@ -941,11 +1009,14 @@ def main():
             event_venue1 = event_venue.get()
             event_date1 = str(cal.get_date())
             event_time1 = str(time_picker.time())
+            
             timing = event_time1.replace(",", ":")
             timing = timing[2:7]
+            
+            
             event_club1 = event_club.get()
             
-            event.add_event(os.path.dirname(__file__) + "\Events.csv",event_name1, event_venue1, event_date1 +" " + timing, event_club1)
+            event.add_event("C:\\Events.csv",event_name1, event_venue1, event_date1 +" " + timing, event_club1)
             
             print(event_name1, event_venue1, event_date1, event_time1, event_club1)
             back_to_pavillion()
@@ -981,9 +1052,22 @@ def main():
 
         event_club = ctk.CTkComboBox(request_frame, values=list_clubsrequest)
         event_club.pack(pady=10)
-        
-        submit_event = ctk.CTkButton(request_frame, text="Submit", corner_radius=50, width=300, text_color="black", command=submit_event)
+
+        def check_submit_event():
+            if(event_name.get() == "" or event_club.get() == "" or event_venue.get() == ""):
+                popup = ctk.CTkToplevel(root)
+                popup.title("Popup Window")
+                popup.geometry("200x100")
+                label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                label.pack(pady=10)
+                close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                close_button.pack()
+            else:
+                submit_event()
+        submit_event = ctk.CTkButton(request_frame, text="Submit", corner_radius=50, width=300, text_color="black", command=check_submit_event)
         submit_event.pack(pady=10)
+        
+       
         
 
         
@@ -1011,12 +1095,14 @@ def main():
             def adding():
                 global list_name, list_club, list_id    
                 print(password.get())
-                outrequest = member.member_accept(os.path.dirname(__file__) + "\Records.csv",os.path.dirname(__file__) + "\Requests.csv",os.path.dirname(__file__) + "\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
+                outrequest = member.member_accept("C:\\Records.csv","C:\\Requests.csv","C:\\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
                 print(outrequest)
                 if outrequest == "Request accepted successfully.":
-                    list_name = member.readName(os.path.dirname(__file__) + "\Requests.csv")
-                    list_id = member.readId(os.path.dirname(__file__) + "\Requests.csv")
-                    list_club = member.readClub(os.path.dirname(__file__) + "\Requests.csv")    
+                    list_name = member.readName("C:\\Requests.csv")
+                    list_id = member.readId("C:\\Requests.csv")
+                    list_club = member.readClub("C:\\Requests.csv")   
+                    
+                    autofill.append(text_name)
                     
                     update_request()
                     root2.destroy()
@@ -1031,7 +1117,20 @@ def main():
             password = ctk.CTkEntry(root2, width=300, placeholder_text="Enter password", show = "*", border_width=2, font=('Helvetica', 16))
             password.place(relx = 0.5, rely = 0.2, anchor = "n")
             
-            submit_pass = ctk.CTkButton(root2, text="Submit", corner_radius=50, width=70, text_color="black", command=adding)
+            def check_adding():
+           
+                if (password.get() != list_club[i] + "123") or (" " +password.get() != list_club[i] + "123"):
+                    popup = ctk.CTkToplevel(root)
+                    popup.title("Popup Window")
+                    popup.geometry("300x100")
+                    label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                    label.pack(pady=10)
+                    close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                    close_button.pack()
+                else:
+                    adding()
+            
+            submit_pass = ctk.CTkButton(root2, text="Submit", corner_radius=50, width=70, text_color="black", command=check_adding)
             submit_pass.place(relx = 0.5, rely = 0.5, anchor = "n")
             
             root2.mainloop()
@@ -1047,12 +1146,19 @@ def main():
                     print(list_club[i] + "123")
                     passwordreject.get()
                     if (passwordreject.get() == list_club[i] + "123") or (" " +passwordreject.get() == list_club[i] + "123"):
-                        tempfilepath = os.path.dirname(__file__) + "\ctemp.csv"
-                        outrequest = member.delete_request(os.path.dirname(__file__) + "\Requests.csv",tempfilepath,text_name)
+              
+                        tempfilepath = "C:\manager\ctemp.csv"
+                        outrequest = member.delete_request( "C:\manager\Requests.csv",tempfilepath,text_name)
                         print(outrequest)
                         update_request()
-                        
-                        
+                    else:
+                        popup = ctk.CTkToplevel(root)
+                        popup.title("Popup Window")
+                        popup.geometry("300x100")
+                        label = ctk.CTkLabel(popup, text="Please Fill Out Proper Information!!")
+                        label.pack(pady=10)
+                        close_button = ctk.CTkButton(popup, text="Close", command=popup.destroy)
+                        close_button.pack()
                         
                         root3.destroy()
                     
@@ -1149,7 +1255,7 @@ def main():
     
         autofill = superfastcode2.autokeys(name_hashtable)
     
-        search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,command=search, width=70, text_color="black")
+        search_button = ctk.CTkButton(search_frame, text="Search", corner_radius=50,command=check_search, width=70, text_color="black")
         search_button.place(relx = 0.83, rely = 0.25, anchor = "n")
 
         access_frame = ctk.CTkFrame(root, width=280, height=500, border_width=0, fg_color="#0f0f0f",corner_radius=0)
@@ -1174,10 +1280,10 @@ def main():
     
         request_frame = ctk.CTkScrollableFrame(root,fg_color="#0f0f0f", width=721, height=500, border_width=0,corner_radius=0)
         request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
-        list_eventname = superfastcode2.readAllClubEvents(os.path.dirname(__file__) + "\Events.csv")
-        list_eventvenue = superfastcode2.readAllClubVenues(os.path.dirname(__file__) + "\Events.csv")
-        list_eventdate = superfastcode2.readAllDate(os.path.dirname(__file__) + "\Events.csv")
-        list_eventclub = superfastcode2.readAllClubNames(os.path.dirname(__file__) + "\Events.csv")
+        list_eventname = superfastcode2.readAllClubEvents("C:\\Events.csv")
+        list_eventvenue = superfastcode2.readAllClubVenues("C:\\Events.csv")
+        list_eventdate = superfastcode2.readAllDate("C:\\Events.csv")
+        list_eventclub = superfastcode2.readAllClubNames("C:\\Events.csv")
     
         values = [["No.", "Event Name", "Date and time", "Venue", "Club"]]
     
@@ -1187,6 +1293,7 @@ def main():
     
         table = CTkTable(master=request_frame, row=len(list_eventname) +1, column=5, values=values, width = 100, height = 50)
         table.grid(row=2, column=0, padx=10, pady=10)
+
 
         label_event = ctk.CTkLabel(request_frame, text="Events : ", font=("Times New Roman", 20))
         label_event.grid(row = 1, column = 0, pady=10, padx=10)
@@ -1210,15 +1317,18 @@ def main():
 
         Progressbar.start()
         
-        name_hashtable = superfastcode2.buildHashTable(os.path.dirname(__file__) + "\Records.csv", "name")
-        id_hashtable = superfastcode2.buildHashTable(os.path.dirname(__file__) + "\Records.csv", "id")
+        label = ctk.CTkLabel(root, text="Building Hashtables and arrays.....", font=("Helvitica Neue", 20))
+        label.place(relx = 0.5, rely = 0.8, anchor = "n")
+        
+        name_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "name")
+        id_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "id")
         member = superfastcode2.Member()
         event = superfastcode2.Event()
         
         global list_name, list_id, list_club
-        list_name = member.readName(os.path.dirname(__file__) + "\Requests.csv")
-        list_id = member.readId(os.path.dirname(__file__) + "\Requests.csv")
-        list_club = member.readClub(os.path.dirname(__file__) + "\Requests.csv")
+        list_name = member.readName("C:\\Requests.csv")
+        list_id = member.readId("C:\\Requests.csv")
+        list_club = member.readClub("C:\\Requests.csv")
         validation = False
     
         global list_clubsrequest
@@ -1231,9 +1341,7 @@ def main():
         
         
     main_screen()
-
-    
-    
+ 
     
 
 
