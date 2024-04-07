@@ -44,10 +44,19 @@ _**Passwords:**_
 - Delete Member: ```"123456"```
 
 
+Due to commit issues in the [Old Existing Repo](https://github.com/DevarshVasani/DA-IICT-Club-Manager), We've made a new one
+
+
+## Installation:
+
+```1) Download the zip from the Releases tab```
+
+```2) Extract the files```
+
+```3) Run "Club Manager.exe" ```
 
 <img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Windows%20Badge/White%20-%20Blue%20(Inverted).png" width="125" height="35">
 
-Due to commit issues in the [Old Existing Repo](https://github.com/DevarshVasani/DA-IICT-Club-Manager), We've made a new one
 
 
 ## Authors
