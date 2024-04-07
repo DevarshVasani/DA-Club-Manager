@@ -1,4 +1,4 @@
-﻿from re import I
+from re import I
 from tkinter.ttk import Progressbar
 from turtle import update
 from sqlite3 import ProgrammingError
@@ -45,7 +45,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\Chess Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\Chess Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -114,7 +114,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\AI Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\AI Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -183,7 +183,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\Business Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\Business Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -252,7 +252,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\DADC.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\icons\DADC.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -326,7 +326,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\DTG Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\Club Manager\\icons\DTG Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -466,7 +466,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\Press Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\Club Manager\\icons\Press Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -535,7 +535,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\pmmc.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\Club Manager\\icons\pmmc.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -602,7 +602,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\Research Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\Club Manager\\icons\Research Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -677,7 +677,7 @@ def main():
             pass
         
 
-        image_path = "C:\\icons\Programming Club.jpg"  # Change this to your image path
+        image_path = "C:\\Club Manager\\Club Manager\\icons\Programming Club.jpg"  # Change this to your image path
         image = Image.open(image_path)
         # Resize the image to your desired dimensions
         image = image.resize((300, 300), Image.Resampling.LANCZOS)
@@ -806,7 +806,7 @@ def main():
                     
                     
             
-            member.member_request("C:\\Requests.csv",name_member, id_member, club_member)
+            member.member_request("C:\\Club Manager\\Club Manager\\Requests.csv",name_member, id_member, club_member)
 
             root1.destroy()
             list_name.append(name_member)
@@ -967,7 +967,7 @@ def main():
         if list != []:
             def delete_member1():
                 def final_delete():
-                      x = member.delete_member("C:\\Records.csv", "C:\\ctemp.csv", password.get(),name_search)
+                      x = member.delete_member("C:\\Club Manager\\Club Manager\\Records.csv", "C:\\Club Manager\\Club Manager\\ctemp.csv", password.get(),name_search)
                       temproot.destroy()
                 temproot = ctk.CTk()
                 temproot.geometry("650x350")
@@ -1002,7 +1002,7 @@ def main():
     def addEvent():
         
 
-        event.delete_expired_events("C:\\Events.csv", "C:\\ctemp.csv")
+        event.delete_expired_events("C:\\Club Manager\\Club Manager\\Events.csv", "C:\\Club Manager\\Club Manager\\ctemp.csv")
 
 
         try:
@@ -1023,7 +1023,7 @@ def main():
             
             event_club1 = event_club.get()
             
-            event.add_event("C:\\Events.csv",event_name1, event_venue1, event_date1 +" " + timing, event_club1)
+            event.add_event("C:\\Club Manager\\Club Manager\\Events.csv",event_name1, event_venue1, event_date1 +" " + timing, event_club1)
             
             print(event_name1, event_venue1, event_date1, event_time1, event_club1)
             back_to_pavillion()
@@ -1107,12 +1107,12 @@ def main():
             def adding():
                 global list_name, list_club, list_id    
                 print(password.get())
-                outrequest = member.member_accept("C:\\Records.csv","C:\\Requests.csv","C:\\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
+                outrequest = member.member_accept("C:\\Club Manager\\Club Manager\\Records.csv","C:\\Club Manager\\Requests.csv","C:\\Club Manager\\ctemp.csv",name_hashtable,text_name, text_id, text_club, password.get())
                 print(outrequest)
                 if outrequest == "Request accepted successfully.":
-                    list_name = member.readName("C:\\Requests.csv")
-                    list_id = member.readId("C:\\Requests.csv")
-                    list_club = member.readClub("C:\\Requests.csv")   
+                    list_name = member.readName("C:\\Club Manager\\Requests.csv")
+                    list_id = member.readId("C:\\Club Manager\\Requests.csv")
+                    list_club = member.readClub("C:\\Club Manager\\Requests.csv")   
                     
                     autofill.append(text_name)
                     
@@ -1292,8 +1292,8 @@ def main():
     
         request_frame = ctk.CTkScrollableFrame(root,fg_color="#0f0f0f", width=721, height=500, border_width=0,corner_radius=0)
         request_frame.place(relx = 1, rely = 0.27, anchor = "ne")
-        list_eventname = superfastcode2.readAllClubEvents("C:\\Events.csv")
-        list_eventvenue = superfastcode2.readAllClubVenues("C:\\Events.csv")
+        list_eventname = superfastcode2.readAllClubEvents("C:\\Club Manager\\Events.csv")
+        list_eventvenue = superfastcode2.readAllClubVenues("C:\\Club Manager\\Events.csv")
         list_eventdate = superfastcode2.readAllDate("C:\\Events.csv")
         list_eventclub = superfastcode2.readAllClubNames("C:\\Events.csv")
     
