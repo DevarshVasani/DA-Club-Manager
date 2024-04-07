@@ -31,7 +31,18 @@ Backend:
 | Table Colour | ![#c6cdd3](https://via.placeholder.com/10/c6cdd3?text=+) #c6cdd3 |
 
 
+
 ## Appendix
+_**Passwords:**_
+
+- Member Accept Request:```"club name + 123"```
+
+   ```For example if the club is quiz, the password would be "quiz123" ```
+
+- Send Request (Faculty): ```"faculty"```
+
+- Delete Member: ```"123456"```
+
 
 
 <img src = "https://github.com/DevarshVasani/DA-Club-Manager/blob/master/Windows%20Badge/White%20-%20Blue%20(Inverted).png" width="125" height="35">
