@@ -1,8 +1,5 @@
 ﻿from re import I
-<<<<<<<<< Temporary merge branch 1
-=========
 from tkinter.ttk import Progressbar
->>>>>>>>> Temporary merge branch 2
 from turtle import update
 from sqlite3 import ProgrammingError
 from tkinter.font import BOLD
@@ -17,7 +14,6 @@ from tktimepicker import AnalogPicker, AnalogThemes, constants
 from PIL import Image, ImageTk
 from tkinter import messagebox
 from CTkTable import *
->>>>>>>>> Temporary merge branch 2
 import superfastcode2
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -1091,7 +1087,6 @@ def main():
     
     
 
->>>>>>>>> Temporary merge branch 2
     
     
     def update_request():
@@ -1333,7 +1328,6 @@ def main():
     
 
         Progressbar.start()
->>>>>>>>> Temporary merge branch 2
         
         name_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "name")
         id_hashtable = superfastcode2.buildHashTable("C:\\Records.csv", "id")
@@ -1370,11 +1364,7 @@ def main():
     
 
     
-<<<<<<<<< Temporary merge branch 1
->>>>>>>>> Temporary merge branch 2
-=========
->>>>>>>>> Temporary merge branch 2
-    
+
 main()
 
 root.resizable(False, False)
